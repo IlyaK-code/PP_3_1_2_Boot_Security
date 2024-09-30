@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Users</title>
+</head>
+<body>
+<h1>All users:</h1>
+
+<h2 th:if="${users.size() == 0}">Users not found</h2>
+
+<th:block th:each="user : ${users}">
+  <p>
+  <h2>
+    <a th:href="@{/users/user(id=${user.getId()})}" th:text="${user.getName()}">user</a>
+  </h2></p>
+</th:block>
+<br/>
+<br/>
+<a href="/users/new">Create new User</a>
+<br/>
+
+</body>
+</html>

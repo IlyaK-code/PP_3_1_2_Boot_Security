@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Security Example</title>
+    <meta charset="UTF-8">
+    <title>User</title>
 </head>
 <body>
-<h1>User, welcome spring boot security page!</h1>
+<p th:if="${user == null}">
+    User not found
+</p>
+<p th:if="${user != null}">
+<h1>User Details</h1>
+<h2><label>Id: </label>
+    <span th:text="${user.getId()}">Id</span></h2>
+<h2><label>Name: </label>
+    <span th:text="${user.getName()}">Name</span></h2>
+<h2><label>Email: </label>
+    <span th:text="${user.getEmail()}">Email</span></h2>
 
-
+</p>
+<p>
+<h2>
+    <a th:href="@{/users/update(id=${user.getId()})}">Update User</a>
+</h2>
+</p>
+<br/>
+<h2>
+    <a th:href="@{/users/delete(id=${user.getId()})}">Delete User</a>
+</h2>
+<br/>
+<h3>
+    <a href="/users">Back</a>
+</h3>
 </body>
 </html>
